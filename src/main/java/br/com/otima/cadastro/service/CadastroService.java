@@ -44,9 +44,9 @@ public class CadastroService implements ICadastroService {
 	@Override
 	public void excluir(Long id) {
 		
-		//verificando se a empresa pode ser excluida. Resolvi n√£o consumir o tipo da empresa pelo par√¢metro enviado pelo cliente por quest√µes de seguran√ßa (pode ser manipuado na url)
+		//verificando se a empresa pode ser excluida. Resolvi n„o consumir o tipo da empresa pelo par‚metro enviado pelo cliente por questıes de seguranÁa (pode ser manipulado na url)
 		if(!ehFilial(id))
-			throw new IllegalArgumentException("Empresa n√£o poder√° ser exclu√≠da por ser matriz");
+			throw new IllegalArgumentException("Empresa n„o poder· ser excluÌda por ser matriz");
 		
 		cadastroRepository.delete(new CadastroEntity(id));
 		

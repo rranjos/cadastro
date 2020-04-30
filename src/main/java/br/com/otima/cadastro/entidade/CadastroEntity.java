@@ -27,12 +27,12 @@ public class CadastroEntity implements Serializable {
 	
 	@Column(name = "nome", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "Nome √© obrigat√≥rio")
+	@NotBlank(message = "Nome È obrigatÛrio")
     private String nome;
 	
 	@Column(name = "cnpj", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "O CNPJ √© obrigat√≥rio")
+	@NotBlank(message = "O CNPJ È obrigatÛrio")
 	private String cnpj;
 	
 	@Column(name = "tipo", nullable = false, length = 255)
@@ -41,42 +41,42 @@ public class CadastroEntity implements Serializable {
 	
 	@Column(name = "razao_social", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "A Raz√£o Social √© obrigat√≥rio")
+	@NotBlank(message = "A Raz„o Social È obrigatÛrio")
 	private String razaoSocial;
 	
 	@Column(name = "telefone", nullable = false, length = 255)
     @Size(max = 10)
-	@NotBlank(message = "O telefone √© obrigat√≥rio")
+	@NotBlank(message = "O telefone È obrigatÛrio")
 	private String telefone;
 	
 	@Column(name = "email", nullable = false, length = 255)
     @Size(max = 50)
-	@NotBlank(message = "O e-mail √© obrigat√≥rio")
+	@NotBlank(message = "O e-mail È obrigatÛrio")
 	private String email;
 	
 	@Column(name = "cep", nullable = false, length = 255)
-    @Size(max = 8)
-	@NotBlank(message = "O CEP √© obrigat√≥rio")
+    @Size(max = 9)
+	@NotBlank(message = "O CEP È obrigatÛrio")
 	private String cep;
 	
 	@Column(name = "estado", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "O Estado √© obrigat√≥rio")
+	@NotBlank(message = "O Estado È obrigatÛrio")
 	private String estado;
 	
 	@Column(name = "bairro", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "O bairro √© obrigat√≥rio")
+	@NotBlank(message = "O bairro È obrigatÛrio")
 	private String bairro;
 	
 	@Column(name = "cidade", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "A cidade √© obrigat√≥rio")
+	@NotBlank(message = "A cidade È obrigatÛrio")
 	private String cidade;
 	
 	@Column(name = "logradouro", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "O logradouro √© obrigat√≥rio")
+	@NotBlank(message = "O logradouro È obrigatÛrio")
 	private String logradouro;
 	
 	@Column(name = "complemento", nullable = false, length = 255)
