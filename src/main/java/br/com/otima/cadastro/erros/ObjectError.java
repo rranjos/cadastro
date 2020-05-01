@@ -37,5 +37,10 @@ public class ObjectError {
 	public void setParameter(Object parameter) {
 		this.parameter = parameter;
 	}
+	
+	@Override
+	public String toString() {
+		return super.toString();
+	}
 
 }

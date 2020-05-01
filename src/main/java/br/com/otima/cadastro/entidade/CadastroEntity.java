@@ -37,6 +37,7 @@ public class CadastroEntity implements Serializable {
 	
 	@Column(name = "tipo", nullable = false, length = 255)
     @Size(max = 1)
+	@NotBlank(message = "O tipo é obrigatório")
 	private String tipo;
 	
 	@Column(name = "razao_social", nullable = false, length = 255)

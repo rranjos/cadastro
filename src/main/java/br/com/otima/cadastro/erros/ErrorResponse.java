@@ -8,6 +8,7 @@ public class ErrorResponse {
     private int code;
     private String status;
     private List<ObjectError> errors;
+    private String resume;
     
 	public ErrorResponse(String message, int code, String status, List<ObjectError> errors) {
 		super();
@@ -41,6 +42,19 @@ public class ErrorResponse {
 	public void setErrors(List<ObjectError> errors) {
 		this.errors = errors;
 	}
+	public String getResume() {
+		
+		StringBuilder str = new StringBuilder();
+		for (ObjectError objectError : errors) {
+			str.append(objectError.getMessage());
+		}
+		return str.toString();
+	}
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
+	
+	
     
     
     
