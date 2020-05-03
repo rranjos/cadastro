@@ -1,5 +1,7 @@
 package br.com.otima.cadastro.rest;
 
+import java.io.IOException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity.BodyBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.google.common.io.Files;
 
 import br.com.otima.cadastro.entidade.CadastroEntity;
 import br.com.otima.cadastro.service.ICadastroService;
@@ -47,13 +53,13 @@ public class CadastroController {
 	@PostMapping(path = "/criar")
 	public ResponseEntity<Void> criar(@RequestBody @Valid CadastroEntity cadastro) {
 		cadastroService.criar(cadastro);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
+		return new ResponseEntity(cadastro, HttpStatus.CREATED);
 	}
 
 	@PutMapping(value = "/alterar")
 	public ResponseEntity<Void> alterar(@RequestBody CadastroEntity cadastro) {
 		cadastroService.alterar(cadastro);
-		return ResponseEntity.ok().build();
+		return new ResponseEntity(cadastro, HttpStatus.OK);
 
 	}
 
@@ -67,6 +73,21 @@ public class CadastroController {
 	public ResponseEntity<?> recuperar(@PathVariable("id") Long id) {
 		CadastroEntity cadastro = cadastroService.recuperar(id);
 		return ResponseEntity.ok(cadastro);
+	}
+	
+	@PostMapping("/upload")
+	public ResponseEntity<?> uplaodImage(@RequestParam("arquivo") MultipartFile file) throws IOException {
+		
+		String tipo = Files.getFileExtension(file.getOriginalFilename());
+		
+		if(tipo.equals("csv")) {
+			
+		}else if(tipo.contentEquals("txt")) {
+			
+		}
+		
+		return ResponseEntity.ok().build();
+		
 	}
 
 }

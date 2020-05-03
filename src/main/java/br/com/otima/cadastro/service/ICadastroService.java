@@ -21,5 +21,6 @@ public interface ICadastroService {
 	void alterar(CadastroEntity cadastro);
 
 	void excluir(Long id);
+	
 
 }
