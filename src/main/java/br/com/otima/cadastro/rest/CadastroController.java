@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity.BodyBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,6 +27,9 @@ import com.google.common.io.Files;
 
 import br.com.otima.cadastro.entidade.CadastroEntity;
 import br.com.otima.cadastro.service.ICadastroService;
+import br.com.otima.cadastro.strategy.Strategy;
+import br.com.otima.cadastro.strategy.StrategyFactory;
+import br.com.otima.cadastro.strategy.StrategyName;
 
 @RestController
 @RequestMapping({ "/empresa" })
@@ -36,6 +38,10 @@ public class CadastroController {
 
 	@Autowired
 	ICadastroService cadastroService;
+	
+	 @Autowired
+	 private StrategyFactory strategyFactory;
+	 
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> listar(@PageableDefault(page = 0, size = 20) Pageable p) {
@@ -76,16 +82,11 @@ public class CadastroController {
 	}
 	
 	@PostMapping("/upload")
-	public ResponseEntity<?> uplaodImage(@RequestParam("arquivo") MultipartFile file) throws IOException {
+	public ResponseEntity<?> upload(@RequestParam("arquivo") MultipartFile file) throws IOException, ClassNotFoundException {
 		
 		String tipo = Files.getFileExtension(file.getOriginalFilename());
-		
-		if(tipo.equals("csv")) {
-			
-		}else if(tipo.contentEquals("txt")) {
-			
-		}
-		
+		Strategy s = strategyFactory.findStrategy(StrategyName.valueOf("Import"+tipo.toUpperCase()));
+		s.importar(file);
 		return ResponseEntity.ok().build();
 		
 	}

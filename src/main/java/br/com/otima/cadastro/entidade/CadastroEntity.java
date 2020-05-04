@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.opencsv.bean.CsvBindByName;
+
 @Entity
 @Table(name = "tb_empresa")
 public class CadastroEntity implements Serializable {
@@ -23,71 +25,80 @@ public class CadastroEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+	private Long id;
 	
 	@Column(name = "nome", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "Nome � obrigat�rio")
+	@NotBlank(message = "Nome é obrigatório")
+	@CsvBindByName
     private String nome;
 	
 	@Column(name = "cnpj", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "O CNPJ � obrigat�rio")
+	@NotBlank(message = "O CNPJ é obrigatório")
+	@CsvBindByName
 	private String cnpj;
 	
 	@Column(name = "tipo", nullable = false, length = 255)
     @Size(max = 1)
-	@NotBlank(message = "O tipo � obrigat�rio")
+	@NotBlank(message = "O tipo é obrigatório")
+	@CsvBindByName
 	private String tipo;
 	
 	@Column(name = "razao_social", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "A Raz�o Social � obrigat�rio")
+	@NotBlank(message = "A Raz�o Social é obrigatório")
+	@CsvBindByName
 	private String razaoSocial;
 	
 	@Column(name = "telefone", nullable = false, length = 255)
     @Size(max = 10)
-	@NotBlank(message = "O telefone � obrigat�rio")
+	@NotBlank(message = "O telefone é obrigatório")
+	@CsvBindByName
 	private String telefone;
 	
 	@Column(name = "email", nullable = false, length = 255)
     @Size(max = 50)
-	@NotBlank(message = "O e-mail � obrigat�rio")
+	@NotBlank(message = "O e-mail é obrigatório")
+	@CsvBindByName
 	private String email;
 	
 	@Column(name = "cep", nullable = false, length = 255)
     @Size(max = 9)
-	@NotBlank(message = "O CEP � obrigat�rio")
+	@NotBlank(message = "O CEP é obrigatório")
+	@CsvBindByName
 	private String cep;
 	
 	@Column(name = "estado", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "O Estado � obrigat�rio")
+	@NotBlank(message = "O Estado é obrigatório")
+	@CsvBindByName
 	private String estado;
 	
 	@Column(name = "bairro", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "O bairro � obrigat�rio")
+	@NotBlank(message = "O bairro é obrigatório")
+	@CsvBindByName
 	private String bairro;
 	
 	@Column(name = "cidade", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "A cidade � obrigat�rio")
+	@NotBlank(message = "A cidade é obrigatório")
+	@CsvBindByName
 	private String cidade;
 	
 	@Column(name = "logradouro", nullable = false, length = 255)
     @Size(max = 45)
-	@NotBlank(message = "O logradouro � obrigat�rio")
+	@NotBlank(message = "O logradouro é obrigatório")
+	@CsvBindByName
 	private String logradouro;
 	
 	@Column(name = "complemento", nullable = false, length = 255)
     @Size(max = 45)
+	@CsvBindByName
 	private String complemento;
 	
 
-
-	
-	
 	public CadastroEntity(
 			Long id,
 			String nome,
@@ -116,6 +127,32 @@ public class CadastroEntity implements Serializable {
 		this.cidade = cidade;
 		this.logradouro = logradouro;
 		this.complemento = complemento;
+	}
+	
+	public CadastroEntity(
+			String nome,
+			String cnpj,
+			String tipo,
+			String razaoSocial,
+			String telefone,
+			String email,
+			String cep,
+			String estado,
+			String bairro,
+			String cidade,
+			String logradouro) {
+		super();
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.tipo = tipo;
+		this.razaoSocial = razaoSocial;
+		this.telefone = telefone;
+		this.email = email;
+		this.cep = cep;
+		this.estado = estado;
+		this.bairro = bairro;
+		this.cidade = cidade;
+		this.logradouro = logradouro;
 	}
 
 	public CadastroEntity() {	
