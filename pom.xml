@@ -72,7 +72,10 @@
 			<artifactId>guava</artifactId>
 			<version>24.1.1-jre</version>
 		</dependency>
-		
+		   <dependency>
+		      <groupId>org.postgresql</groupId>
+		      <artifactId>postgresql</artifactId>
+		    </dependency>
 	  
     <dependency>
         <groupId>com.opencsv</groupId>

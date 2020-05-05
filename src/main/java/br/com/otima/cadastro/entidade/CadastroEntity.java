@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 import com.opencsv.bean.CsvBindByName;
 
 @Entity
-@Table(name = "tb_empresa")
+@Table(name = "tb_empresa", schema = "otm_company")
 public class CadastroEntity implements Serializable {
 	
 	/**
@@ -23,7 +23,7 @@ public class CadastroEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
 	private Long id;
 	

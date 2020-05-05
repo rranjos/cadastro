@@ -66,11 +66,11 @@ public class CadastroTest {
     	
     	mockMvc.perform(MockMvcRequestBuilders.get("/empresa/filtrar/")
     	        .contentType("application/json")
-    	        .param("nome", "TryTec")
-    	        .param("cnpj", "68103003000194")
+    	        .param("nome", "BILLMED")
+    	        .param("cnpj", "39096042245595")
     	        .content(objectMapper.writeValueAsString(getPageable())))
     			.andExpect(status().isOk())
-    			.andExpect(jsonPath("$.content[0].nome", is("TryTec")));
+    			.andExpect(jsonPath("$.content[0].nome", is("BILLMED")));
 
     }
     
@@ -91,7 +91,7 @@ public class CadastroTest {
     void alterar() throws Exception{
     	
     	MvcResult result = 	mockMvc.perform(put("/empresa/alterar")
-  		      .content(objectMapper.writeValueAsString(new CadastroEntity(new Long(42),"Novo Nome", "68103003000194", "2", "TryTec", "996255252", "anjos.ricardo@gmail.com", "71909720", "Distrito Federal", "Águas Claras", "Brasília", "Rua 30 Norte", "")))
+  		      .content(objectMapper.writeValueAsString(new CadastroEntity(new Long(829),"Novo Nome", "68103003000194", "2", "TryTec", "996255252", "anjos.ricardo@gmail.com", "71909720", "Distrito Federal", "Águas Claras", "Brasília", "Rua 30 Norte", "")))
   		      .contentType("application/json"))
       		      .andExpect(status().isOk())
       		      .andExpect(jsonPath("$.nome", is("Novo Nome")))
@@ -100,7 +100,7 @@ public class CadastroTest {
     
     @Test
     void excluir () throws Exception{
-    	mockMvc.perform(delete("/empresa/excluir/{id}", "42"))
+    	mockMvc.perform(delete("/empresa/excluir/{id}", "829"))
     	.andExpect(status().isOk());
     }
     
@@ -108,7 +108,7 @@ public class CadastroTest {
     void recuperar() throws Exception {
     	
     	
-    	mockMvc.perform(MockMvcRequestBuilders.get("/empresa/{id}", "49")
+    	mockMvc.perform(MockMvcRequestBuilders.get("/empresa/{id}", "824")
     	        .contentType("application/json"))
     	        .andExpect(status().isOk())
     			.andExpect(jsonPath("$.nome", is("TryTec")));
