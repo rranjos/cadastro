@@ -33,7 +33,7 @@ import br.com.otima.cadastro.strategy.StrategyName;
 
 @RestController
 @RequestMapping({ "/empresa" })
-@CrossOrigin(origins = "http://localhost:4200/*")
+@CrossOrigin(origins = "http://tomcat:4200/*")
 public class CadastroController {
 
 	@Autowired

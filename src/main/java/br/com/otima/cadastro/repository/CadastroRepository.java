@@ -16,7 +16,7 @@ public interface CadastroRepository extends PagingAndSortingRepository<CadastroE
 	@Query("select c from CadastroEntity c where c.nome like %:nome% or c.cnpj = :cnpj")
 	Page<CadastroEntity> filtrarEmpresasPorNomeCNPJ(@Param("nome") String nome, @Param("cnpj") String cnpj, Pageable p);
 
-	@Query("select case when (c.tipo = 2)  then true else false end from CadastroEntity c where c.id = :id")
+	@Query("select case when (c.tipo = '2')  then true else false end from CadastroEntity c where c.id = :id")
 	boolean consultaTipoEmpresa(@Param("id") Long id);
 
 
